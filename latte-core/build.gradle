@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
-
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -24,16 +23,20 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
     testCompile 'junit:junit:4.12'
     compile project(':latte-annotations')
     annotationProcessor project(':latte-compiler')
     // 字体库
-    compile 'com.joanzapata.android.iconify:android-iconify-fontawesome:2.0.0'
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+    compile "com.joanzapata.iconify:android-iconify-fontawesome:$rootProject.ext.iconifyVersion"
+    compile "com.joanzapata.iconify:android-iconify-ionicons:$rootProject.ext.iconifyVersion"
     // 如果想使用SwipeBack 滑动边缘退出Fragment/Activity功能，完整的添加规则如下：
-    compile 'me.yokeyword:fragmentation:1.0.9'
+    compile "me.yokeyword:fragmentation:$rootProject.ext.fragmentationVersion"
     // swipeback基于fragmentation, 如果是自定制SupportActivity/Fragment，则参照SwipeBackActivity/Fragment实现即可
-    compile 'me.yokeyword:fragmentation-swipeback:1.0.9'
+    compile "me.yokeyword:fragmentation-swipeback:$rootProject.ext.fragmentationVersion"
 
 }

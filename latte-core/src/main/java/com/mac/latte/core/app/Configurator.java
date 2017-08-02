@@ -1,12 +1,12 @@
 package com.mac.latte.core.app;
 
-import com.joanzapata.android.iconify.IconFontDescriptor;
-import com.joanzapata.android.iconify.Iconify;
+
+import com.joanzapata.iconify.IconFontDescriptor;
+import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.WeakHashMap;
 
 /**
  * 配置器，配置一些全局通用的东西
@@ -23,7 +23,7 @@ public class Configurator {
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
     }
 
-    public HashMap<String, Object> getLatteConfigs() {
+    HashMap<String, Object> getLatteConfigs() {
         return LATTE_CONFIGS;
     }
 
@@ -53,7 +53,7 @@ public class Configurator {
         return this;
     }
 
-    public static Configurator getInstance() {
+    static Configurator getInstance() {
         return Holder.INSTANCE;
     }
 
@@ -62,7 +62,7 @@ public class Configurator {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getConfiguration(ConfigType type) {
+    static <T> T getConfiguration(ConfigType type) {
         checkConfigReady();
         return (T) LATTE_CONFIGS.get(type.name());
     }

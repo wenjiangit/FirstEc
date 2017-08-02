@@ -2,7 +2,8 @@ package com.mac.firstec;
 
 import android.app.Application;
 
-import com.joanzapata.android.iconify.fonts.FontAwesomeModule;
+import com.douliu.latte.ec.icon.FontAliModule;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.mac.latte.core.app.Latte;
 
 /**
@@ -17,7 +18,9 @@ public class ExampleApp extends Application {
         super.onCreate();
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
+                .withIcon(new FontAliModule())
                 .withApiHost("http://localhost:8080")
                 .configure();
+
     }
 }

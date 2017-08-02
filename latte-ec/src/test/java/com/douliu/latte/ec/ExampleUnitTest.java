@@ -1,4 +1,4 @@
-package com.mac.latte.ec;
+package com.douliu.latte.ec;
 
 import org.junit.Test;
 
