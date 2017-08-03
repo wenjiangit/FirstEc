@@ -6,5 +6,5 @@ package com.mac.latte.core.net.callback;
 
 public interface IFailure {
 
-    void onFailure(int code, String msg);
+    void onFailure();
 }

@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/test"
         android:textColor="@color/colorAccent"
         android:text="@string/app_name"
         android:textSize="30sp"

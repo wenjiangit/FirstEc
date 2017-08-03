@@ -6,5 +6,5 @@ package com.mac.latte.core.net.callback;
 
 public interface IError {
 
-    void onError();
+    void onError(int code,String msg);
 }

@@ -5,6 +5,7 @@ import com.mac.latte.core.net.callback.IFailure;
 import com.mac.latte.core.net.callback.IRequest;
 import com.mac.latte.core.net.callback.ISuccess;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -20,7 +21,7 @@ import okhttp3.RequestBody;
 public class RestClientBuilder {
 
     private String url;
-    private Map<String, Object> params;
+    private Map<String, Object> params = new WeakHashMap<>();
     private ISuccess success;
     private IError error;
     private IFailure failure;
