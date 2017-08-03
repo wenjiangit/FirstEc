@@ -25,7 +25,7 @@ public class RestClient {
     private final RequestBody body;
 
 
-    public RestClient(String url, Map<String, Object> params,
+    RestClient(String url, Map<String, Object> params,
                       ISuccess success, IError error,
                       IFailure failure, IRequest request,
                       RequestBody body) {

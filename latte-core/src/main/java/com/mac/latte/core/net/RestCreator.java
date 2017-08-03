@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  *
@@ -14,11 +15,16 @@ import retrofit2.Retrofit;
 
 public class RestCreator {
 
+    public static RestService getService() {
+        return ServiceHolder.REST_SERVICE;
+    }
+
     private static class RetrofitHolder{
         private static final String BASE_URL = Latte.getApiHost();
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OkhttpHolder.OK_HTTP_CLIENT)
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
     }
 

@@ -35,4 +35,5 @@ ext{
     supportVersion = "25.3.1"
     fragmentationVersion = "1.0.9"
     iconifyVersion = "2.2.2"
+    butterknifeVersion = "8.5.1"
 }

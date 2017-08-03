@@ -10,10 +10,10 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
@@ -37,6 +37,7 @@ public interface RestService {
     @DELETE
     Call<String> delete(@Url String url,@QueryMap Map<String, Object> params);
 
+    @Streaming
     @GET
     Call<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> params);
 

@@ -69,7 +69,7 @@ public class RestClientBuilder {
         return this;
     }
 
-    public RestClientBuilder body(MultipartBody body) {
+    public RestClientBuilder body(RequestBody body) {
         this.body = body;
         return this;
     }

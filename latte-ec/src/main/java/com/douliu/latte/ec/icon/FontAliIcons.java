@@ -15,7 +15,7 @@ public enum FontAliIcons implements Icon{
 
     char character;
 
-    private FontAliIcons(char character) {
+    FontAliIcons(char character) {
         this.character = character;
     }
 
