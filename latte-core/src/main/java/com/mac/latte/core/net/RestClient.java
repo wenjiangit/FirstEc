@@ -9,7 +9,6 @@ import com.mac.latte.core.net.callback.IRequest;
 import com.mac.latte.core.net.callback.ISuccess;
 import com.mac.latte.core.net.callback.RequestCallback;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.RequestBody;
@@ -17,6 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 /**
+ *
  * Created by mac on 2017/8/2.
  */
 

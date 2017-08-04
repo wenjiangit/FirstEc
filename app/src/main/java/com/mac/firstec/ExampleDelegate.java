@@ -9,7 +9,6 @@ import com.mac.latte.core.delegate.LatteDelegate;
 import com.mac.latte.core.net.RestClient;
 import com.mac.latte.core.net.callback.ISuccess;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -27,18 +26,10 @@ public class ExampleDelegate extends LatteDelegate {
 
     @Override
     protected void onBindView(Bundle savedInstanceState, View rootView) {
-
-        rootView.findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                request(v);
-            }
-        });
-
     }
 
     @OnClick(R.id.test)
-    public void request(View view) {
+    public void request() {
 
         Toast.makeText(getContext(),"hahahha",Toast.LENGTH_SHORT).show();
 
@@ -48,6 +39,7 @@ public class ExampleDelegate extends LatteDelegate {
                     @Override
                     public void onSuccess(String response) {
                         Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Thread: " + Thread.currentThread().getName());
 
                         Log.d(TAG, "onSuccess: "+response);
                     }

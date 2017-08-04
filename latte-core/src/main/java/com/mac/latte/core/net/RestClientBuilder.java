@@ -5,7 +5,6 @@ import com.mac.latte.core.net.callback.IFailure;
 import com.mac.latte.core.net.callback.IRequest;
 import com.mac.latte.core.net.callback.ISuccess;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -21,7 +20,7 @@ import okhttp3.RequestBody;
 public class RestClientBuilder {
 
     private String url;
-    private Map<String, Object> params = new WeakHashMap<>();
+    private final Map<String, Object> params = new WeakHashMap<>();
     private ISuccess success;
     private IError error;
     private IFailure failure;
@@ -34,14 +33,14 @@ public class RestClientBuilder {
     }
 
     public RestClientBuilder params(String key, String value) {
-        checkParams();
         this.params.put(key, value);
         return this;
     }
 
     public RestClientBuilder params(Map<String, Object> params) {
-        checkParams();
-        this.params.putAll(params);
+        if (params != null) {
+            this.params.putAll(params);
+        }
         return this;
     }
 
@@ -77,12 +76,6 @@ public class RestClientBuilder {
 
     public RestClient build() {
         return new RestClient(url, params, success, error, failure, request, body);
-    }
-
-    private void checkParams() {
-        if (params == null) {
-            params = new WeakHashMap<>();
-        }
     }
 
 
