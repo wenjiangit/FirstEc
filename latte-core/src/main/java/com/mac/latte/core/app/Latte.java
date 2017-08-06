@@ -3,6 +3,10 @@ package com.mac.latte.core.app;
 import android.content.Context;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import okhttp3.Interceptor;
 
 /**
  *
@@ -12,12 +16,12 @@ import java.util.HashMap;
 public final class Latte {
 
     public static Configurator init(Context context) {
-        getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(),
+        getConfigurations().put(ConfigKey.APPLICATION_CONTEXT.name(),
                 context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static HashMap<String, Object> getConfigurations() {
+    private static Map<String, Object> getConfigurations() {
         return Configurator.getInstance().getLatteConfigs();
     }
 
@@ -26,7 +30,11 @@ public final class Latte {
      * @return ApplicationContext
      */
     public static Context getApplication() {
-        return Configurator.getConfiguration(ConfigType.APPLICATION_CONTEXT);
+        return Configurator.getConfiguration(ConfigKey.APPLICATION_CONTEXT);
+    }
+
+    public static List<Interceptor> getInterceptors() {
+        return Configurator.getConfiguration(ConfigKey.INTERCEPTOR);
     }
 
     /**
@@ -34,7 +42,7 @@ public final class Latte {
      * @return 主机域名
      */
     public static String getApiHost() {
-        return Configurator.getConfiguration(ConfigType.API_HOST);
+        return Configurator.getConfiguration(ConfigKey.API_HOST);
     }
 
 

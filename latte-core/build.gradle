@@ -46,5 +46,6 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:converter-scalars:$rootProject.ext.retrofitVersion"
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.wang.avi:library:2.1.3'
 
 }

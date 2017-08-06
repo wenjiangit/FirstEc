@@ -3,6 +3,7 @@ package com.mac.latte.core.net;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -30,9 +31,15 @@ public interface RestService {
     @POST
     Call<String> post(@Url String url, @FieldMap Map<String, Object> params);
 
+    @POST
+    Call<String> postRaw(@Url String url, @Body RequestBody body);
+
     @FormUrlEncoded
     @PUT
     Call<String> put(@Url String url,@FieldMap Map<String, Object> params);
+
+    @PUT
+    Call<String> putRaw(@Url String url, @Body RequestBody body);
 
     @DELETE
     Call<String> delete(@Url String url,@QueryMap Map<String, Object> params);

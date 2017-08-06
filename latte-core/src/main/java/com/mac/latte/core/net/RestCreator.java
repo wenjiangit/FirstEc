@@ -2,8 +2,10 @@ package com.mac.latte.core.net;
 
 import com.mac.latte.core.app.Latte;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -30,9 +32,22 @@ class RestCreator {
 
     private static class OkhttpHolder{
         private static final int TIME_OUT = 60;
-        private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient.Builder()
+        private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();
+
+        private static OkHttpClient.Builder addInterceptor() {
+            List<Interceptor> interceptors = Latte.getInterceptors();
+            if (interceptors != null && !interceptors.isEmpty()) {
+                for (Interceptor interceptor : interceptors) {
+                    BUILDER.addInterceptor(interceptor);
+                }
+            }
+
+            return BUILDER;
+
+        }
     }
 
 
