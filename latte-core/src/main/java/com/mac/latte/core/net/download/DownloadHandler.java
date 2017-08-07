@@ -1,8 +1,10 @@
-package com.mac.latte.core.net;
+package com.mac.latte.core.net.download;
 
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import com.mac.latte.core.net.RestCreator;
+import com.mac.latte.core.net.RestService;
 import com.mac.latte.core.net.callback.IError;
 import com.mac.latte.core.net.callback.IFailure;
 import com.mac.latte.core.net.callback.IRequest;
@@ -20,7 +22,7 @@ import retrofit2.Response;
  * Created by mac on 2017/8/6.
  */
 
-class DownloadHandler {
+public class DownloadHandler {
 
     private final String url;
     private final Map<String, Object> params;
@@ -32,7 +34,7 @@ class DownloadHandler {
     private final String extension;
     private final String name;
 
-    DownloadHandler(String url, Map<String, Object> params,
+    public DownloadHandler(String url, Map<String, Object> params,
                            ISuccess success, IError error,
                            IFailure failure, IRequest request,
                            String downloadDir, String extension, String name) {
@@ -47,7 +49,7 @@ class DownloadHandler {
         this.name = name;
     }
 
-    void handleDownload() {
+    public void handleDownload() {
         if (request != null) {
             request.onRequestStart();
         }

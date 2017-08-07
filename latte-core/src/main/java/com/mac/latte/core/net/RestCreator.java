@@ -15,9 +15,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * Created by mac on 2017/8/2.
  */
 
-class RestCreator {
+public class RestCreator {
 
-    static RestService getService() {
+    public static RestService getService() {
         return ServiceHolder.REST_SERVICE;
     }
 
@@ -44,9 +44,7 @@ class RestCreator {
                     BUILDER.addInterceptor(interceptor);
                 }
             }
-
             return BUILDER;
-
         }
     }
 

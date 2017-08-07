@@ -27,13 +27,21 @@ public class Configurator {
         LATTE_CONFIGS.put(ConfigKey.CONFIG_READY.name(), false);
     }
 
-    Map<String, Object> getLatteConfigs() {
-        return LATTE_CONFIGS;
+    static Configurator getInstance() {
+        return Holder.INSTANCE;
+    }
+
+    private static class Holder {
+        private static final Configurator INSTANCE = new Configurator();
     }
 
     public void configure() {
         initIcons();
         LATTE_CONFIGS.put(ConfigKey.CONFIG_READY.name(), true);
+    }
+
+    Map<String, Object> getLatteConfigs() {
+        return LATTE_CONFIGS;
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -53,6 +61,7 @@ public class Configurator {
         }
     }
 
+
     public Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
         LATTE_CONFIGS.put(ConfigKey.INTERCEPTOR.name(), INTERCEPTORS);
@@ -65,18 +74,9 @@ public class Configurator {
         return this;
     }
 
-
     public Configurator withIcon(IconFontDescriptor descriptor) {
         ICONS.add(descriptor);
         return this;
-    }
-
-    static Configurator getInstance() {
-        return Holder.INSTANCE;
-    }
-
-    private static class Holder {
-        private static final Configurator INSTANCE = new Configurator();
     }
 
     @SuppressWarnings("unchecked")

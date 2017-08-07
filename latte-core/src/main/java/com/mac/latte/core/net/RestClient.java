@@ -3,26 +3,23 @@ package com.mac.latte.core.net;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.mac.latte.core.R;
-import com.mac.latte.core.app.Latte;
 import com.mac.latte.core.net.callback.HttpMethod;
 import com.mac.latte.core.net.callback.IError;
 import com.mac.latte.core.net.callback.IFailure;
 import com.mac.latte.core.net.callback.IRequest;
 import com.mac.latte.core.net.callback.ISuccess;
 import com.mac.latte.core.net.callback.RequestCallback;
+import com.mac.latte.core.net.download.DownloadHandler;
 import com.mac.latte.core.ui.LatteLoader;
 import com.mac.latte.core.ui.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
 
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.http.Multipart;
 
 /**
  *

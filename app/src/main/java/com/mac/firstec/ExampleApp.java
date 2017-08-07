@@ -5,6 +5,7 @@ import android.app.Application;
 import com.douliu.latte.ec.icon.FontAliModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.mac.latte.core.app.Latte;
+import com.mac.latte.core.net.interceptors.DebugInterceptor;
 
 /**
  * 自定义Application
@@ -19,6 +20,7 @@ public class ExampleApp extends Application {
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontAliModule())
+                .withInterceptor(new DebugInterceptor("www",R.raw.test))
                 .withApiHost("http://localhost:8080")
                 .configure();
 

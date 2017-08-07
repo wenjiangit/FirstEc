@@ -13,11 +13,11 @@ import java.util.WeakHashMap;
  * Created by mac on 2017/8/5.
  */
 
-public class LoaderCreator {
+class LoaderCreator {
 
     private static final WeakHashMap<String, Indicator> LOADERS = new WeakHashMap<>();
 
-    public static AVLoadingIndicatorView create(Context context, String type) {
+    static AVLoadingIndicatorView create(Context context, String type) {
         final AVLoadingIndicatorView loadingIndicatorView = new AVLoadingIndicatorView(context);
         Indicator indicator = LOADERS.get(type);
         if (indicator == null) {

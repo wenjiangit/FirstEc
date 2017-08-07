@@ -12,7 +12,6 @@ import com.mac.latte.core.utils.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -47,7 +46,7 @@ public class LatteLoader {
             attributes.height = screenHeight / SCREEN_SCALE;
 
             attributes.gravity = Gravity.CENTER;
-//            attributes.height = attributes.height + screenHeight / HEIGHT_OFFSET_SCALE;
+            attributes.height = attributes.height + screenHeight / HEIGHT_OFFSET_SCALE;
         }
 
         DIALOGS.add(dialog);

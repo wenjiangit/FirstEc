@@ -7,6 +7,7 @@ import com.mac.latte.core.utils.FileUtil;
 import java.io.IOException;
 
 import okhttp3.MediaType;
+import okhttp3.Protocol;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
@@ -39,8 +40,10 @@ public class DebugInterceptor extends BaseInterceptor {
         return new Response.Builder()
                 .addHeader("Content-Type", "application/json")
                 .body(createResponseBody(json))
+                .request(chain.request())
                 .code(200)
                 .message("ok")
+                .protocol(Protocol.HTTP_1_1)
                 .build();
     }
 

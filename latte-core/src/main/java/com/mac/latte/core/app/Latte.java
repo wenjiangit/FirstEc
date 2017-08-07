@@ -2,7 +2,6 @@ package com.mac.latte.core.app;
 
 import android.content.Context;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

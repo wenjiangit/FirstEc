@@ -2,12 +2,10 @@ package com.mac.latte.core.net.interceptors;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -33,8 +31,8 @@ public abstract class BaseInterceptor implements Interceptor{
     }
 
     protected String getUrlParameter(Chain chain, String key) {
-        LinkedHashMap<String, String> parameters = getUrlParameters(chain);
-        return parameters.get(key);
+        HttpUrl url = chain.request().url();
+        return url.queryParameter(key);
     }
 
     protected LinkedHashMap<String, String> getBodyParameters(Chain chain) {

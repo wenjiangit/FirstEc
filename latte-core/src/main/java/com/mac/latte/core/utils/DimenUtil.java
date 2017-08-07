@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import com.mac.latte.core.app.Latte;
 
 /**
+ *
  * Created by mac on 2017/8/5.
  */
 

@@ -1,4 +1,4 @@
-package com.mac.latte.core.net;
+package com.mac.latte.core.net.download;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 
 import com.mac.latte.core.app.Latte;
-import com.mac.latte.core.net.callback.IError;
-import com.mac.latte.core.net.callback.IFailure;
 import com.mac.latte.core.net.callback.IRequest;
 import com.mac.latte.core.net.callback.ISuccess;
 import com.mac.latte.core.utils.FileUtil;
@@ -24,11 +22,6 @@ import okhttp3.ResponseBody;
 
 class SaveFileTask extends AsyncTask<Object, Void, File> {
 
-    private String mDownloadDir;
-    private String mExtension;
-    private String mName;
-    private ResponseBody mBody;
-
     private  ISuccess success;
     private  IRequest request;
 
@@ -39,23 +32,22 @@ class SaveFileTask extends AsyncTask<Object, Void, File> {
 
     @Override
     protected File doInBackground(Object... params) {
-        mDownloadDir = (String) params[0];
-        mName = (String) params[1];
-        mBody = (ResponseBody) params[2];
-        mExtension = (String) params[3];
-        InputStream is = mBody.byteStream();
-        if (TextUtils.isEmpty(mDownloadDir)) {
-            mDownloadDir = "downloads";
+        String downloadDir = (String) params[0];
+        final String name = (String) params[1];
+        final ResponseBody body = (ResponseBody) params[2];
+        String extension = (String) params[3];
+        final InputStream is = body.byteStream();
+        if (TextUtils.isEmpty(downloadDir)) {
+            downloadDir = "downloads";
         }
-        if (TextUtils.isEmpty(mExtension)) {
-            mExtension = "";
+        if (TextUtils.isEmpty(extension)) {
+            extension = "";
         }
 
-        if (TextUtils.isEmpty(mName)) {
-            return FileUtil.writeToDisk(is, mDownloadDir, mExtension.toUpperCase(), mExtension);
-
+        if (TextUtils.isEmpty(name)) {
+            return FileUtil.writeToDisk(is, downloadDir, extension.toUpperCase(), extension);
         } else {
-            return FileUtil.writeToDisk(is, mDownloadDir, mName);
+            return FileUtil.writeToDisk(is, downloadDir, name);
         }
     }
 
@@ -74,6 +66,10 @@ class SaveFileTask extends AsyncTask<Object, Void, File> {
 
     }
 
+    /**
+     * 如果下载的文件是apk结尾的,则自动进行安装
+     * @param file 下载的文件
+     */
     private void autoInstallApk(File file) {
         if (FileUtil.getExtension(file.getPath()).equals("apk")) {
             Intent intent = new Intent();
