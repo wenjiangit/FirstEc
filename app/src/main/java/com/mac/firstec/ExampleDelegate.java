@@ -5,10 +5,14 @@ import android.util.Log;
 import android.view.View;
 
 import com.mac.latte.core.delegate.LatteDelegate;
-import com.mac.latte.core.net.RestClient;
-import com.mac.latte.core.net.callback.ISuccess;
+import com.mac.latte.core.net.rx.RxRestClient;
+import com.mac.latte.core.ui.LatteLoader;
 
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  *
@@ -31,7 +35,7 @@ public class ExampleDelegate extends LatteDelegate {
 
     @OnClick(R.id.test)
     public void onClick() {
-        RestClient.buider()
+        /*RestClient.buider()
                 .url("https://www.baidu.com")
                 .loader(getContext())
                 .success(new ISuccess() {
@@ -41,6 +45,33 @@ public class ExampleDelegate extends LatteDelegate {
                     }
                 }).build()
                 .get();
+*/
+
+        RxRestClient.buider()
+                .url("https://www.baidu.com")
+                .loader(getContext()).build().get()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.d(TAG, "onNext: " + s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LatteLoader.stopLoading();
+                    }
+                });
+
     }
 
 }
