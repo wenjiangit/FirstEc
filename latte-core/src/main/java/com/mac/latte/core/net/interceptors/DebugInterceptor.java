@@ -26,7 +26,6 @@ public class DebugInterceptor extends BaseInterceptor {
         this.rawId = rawId;
     }
 
-
     @Override
     public Response intercept(Chain chain) throws IOException {
         String url = chain.request().url().toString();
