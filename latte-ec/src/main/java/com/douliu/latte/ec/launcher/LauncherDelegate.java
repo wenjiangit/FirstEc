@@ -3,10 +3,13 @@ package com.douliu.latte.ec.launcher;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.douliu.latte.ec.R;
 import com.douliu.latte.ec.R2;
+import com.mac.latte.core.constans.LattePrefKey;
 import com.mac.latte.core.delegate.LatteDelegate;
+import com.mac.latte.core.utils.LattePreferences;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +46,17 @@ public class LauncherDelegate extends LatteDelegate {
 
     @OnClick(R2.id.tv_timer)
     public void onViewClicked() {
+        checkFirstEnter();
+    }
 
+    private void checkFirstEnter() {
+        boolean hasEnter = LattePreferences.getFlag(LattePrefKey.IS_FIRST_ENTER_APP);
+        if (!hasEnter) {
+            start(new LauncherScrollDelegate(), SINGLETASK);
+        } else {
+            // TODO: 2017/8/9 跳转到主界面
+            Toast.makeText(getContext(), "跳转到主界面", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void startTimer() {
@@ -59,6 +72,7 @@ public class LauncherDelegate extends LatteDelegate {
                         count--;
                         if (count < 0) {
                             mDisposable.dispose();
+                            checkFirstEnter();
                         }
                     }
                 });
