@@ -34,6 +34,13 @@ public class LauncherDelegate extends LatteDelegate {
     private Disposable mDisposable;
     private int count = 5;
 
+    public static LauncherDelegate newInstance() {
+        Bundle args = new Bundle();
+        LauncherDelegate fragment = new LauncherDelegate();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected Object setLayout() {
         return R.layout.delegate_launcher;
@@ -52,10 +59,11 @@ public class LauncherDelegate extends LatteDelegate {
     private void checkFirstEnter() {
         boolean hasEnter = LattePreferences.getFlag(LattePrefKey.IS_FIRST_ENTER_APP);
         if (!hasEnter) {
-            start(new LauncherScrollDelegate(), SINGLETASK);
+            startWithPop(LauncherScrollDelegate.newInstance());
         } else {
             // TODO: 2017/8/9 跳转到主界面
             Toast.makeText(getContext(), "跳转到主界面", Toast.LENGTH_SHORT).show();
+            startWithPop(SignInDelegate.newInstance());
         }
     }
 

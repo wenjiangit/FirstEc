@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,11 +14,11 @@ import com.douliu.latte.ec.R2;
 import com.mac.latte.core.delegate.LatteDelegate;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
+ *
+ *
  * Created by mac on 2017/8/9.
  */
 
@@ -40,6 +38,14 @@ public class SignUpDelegate extends LatteDelegate {
     @BindView(R2.id.tv_go_sign_in)
     TextView mTvGoSignIn;
 
+
+    public static SignUpDelegate newInstance() {
+        Bundle args = new Bundle();
+        SignUpDelegate fragment = new SignUpDelegate();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected Object setLayout() {
         return R.layout.delegate_sign_up;
@@ -50,7 +56,16 @@ public class SignUpDelegate extends LatteDelegate {
 
     }
 
+    @OnClick(R2.id.tv_go_sign_in)
+    void linkSignIn() {
+        start(SignInDelegate.newInstance());
+    }
 
+
+    /**
+     * 检查注册格式
+     * @return 通过返回true,否则返回false
+     */
     private boolean checkForm() {
         String name = mEditName.getText().toString();
         String phone = mEditPhone.getText().toString();

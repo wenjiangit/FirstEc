@@ -38,6 +38,13 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
         PAGES.add(R.mipmap.launcher_05);
     }
 
+    public static LauncherScrollDelegate newInstance() {
+        Bundle args = new Bundle();
+        LauncherScrollDelegate fragment = new LauncherScrollDelegate();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected Object setLayout() {
         mConvenientBanner = new ConvenientBanner<>(getContext());

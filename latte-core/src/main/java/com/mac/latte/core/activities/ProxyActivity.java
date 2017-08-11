@@ -8,6 +8,8 @@ import com.mac.latte.core.R;
 import com.mac.latte.core.delegate.LatteDelegate;
 
 import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  *
@@ -31,5 +33,10 @@ public abstract class ProxyActivity extends SupportActivity{
         if (savedInstanceState == null) {
             loadRootFragment(R.id.delegate_container, setRootDelegate());
         }
+    }
+
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        return new DefaultHorizontalAnimator();
     }
 }

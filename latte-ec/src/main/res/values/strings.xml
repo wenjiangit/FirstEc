@@ -2,7 +2,9 @@
     <string name="app_name">latte-ec</string>
 
     <string name="label_sign_up">注册</string>
-    <string name="label_has_sign_up">已经注册了？请登陆</string>
+    <string name="label_sign_in">登录</string>
+    <string name="label_link_sign_up">已经注册了?去登陆</string>
+    <string name="label_link_sign_in">还没有账户?去注册</string>
     <string name="label_re_password">重复密码</string>
     <string name="label_password">密码</string>
     <string name="label_email_address">邮箱地址</string>

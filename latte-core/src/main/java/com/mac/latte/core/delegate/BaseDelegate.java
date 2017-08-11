@@ -19,6 +19,8 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 public abstract class BaseDelegate extends SwipeBackFragment{
 
+    protected final String TAG = this.getClass().getSimpleName();
+
     private Unbinder mUnbinder;
 
     protected abstract Object setLayout();
@@ -29,7 +31,7 @@ public abstract class BaseDelegate extends SwipeBackFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = null;
+        View rootView;
         if (setLayout() instanceof Integer) {
             rootView = inflater.inflate((Integer) setLayout(), container, false);
         } else if (setLayout() instanceof View) {
@@ -42,7 +44,7 @@ public abstract class BaseDelegate extends SwipeBackFragment{
             mUnbinder = ButterKnife.bind(this, rootView);
             onBindView(savedInstanceState, rootView);
         }
-        return rootView;
+        return attachToSwipeBack(rootView);
     }
 
     protected ProxyActivity getProxyActivity() {
