@@ -64,7 +64,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
     public void onItemClick(int i) {
         if (i == PAGES.size() - 1) {
             // TODO: 2017/8/9 跳转到主界面
-            LattePreferences.setFlag(LattePrefKey.IS_FIRST_ENTER_APP, true);
+            LattePreferences.setAppFlag(LattePrefKey.IS_FIRST_ENTER_APP, true);
             Toast.makeText(getContext(), "跳转到主界面", Toast.LENGTH_SHORT).show();
         }
 

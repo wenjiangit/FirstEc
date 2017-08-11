@@ -18,13 +18,13 @@ public class LattePreferences {
     }
 
 
-    public static void setFlag(String key, boolean flag) {
+    public static void setAppFlag(String key, boolean flag) {
         getPreferences().edit()
                 .putBoolean(key, flag)
                 .apply();
     }
 
-    public static boolean getFlag(String key) {
+    public static boolean getAppFlag(String key) {
         return getPreferences().getBoolean(key, false);
     }
 

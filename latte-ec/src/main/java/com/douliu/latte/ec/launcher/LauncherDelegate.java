@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.douliu.latte.ec.R;
 import com.douliu.latte.ec.R2;
+import com.douliu.latte.ec.sign.SignInDelegate;
 import com.mac.latte.core.constans.LattePrefKey;
 import com.mac.latte.core.delegate.LatteDelegate;
 import com.mac.latte.core.utils.LattePreferences;
@@ -57,7 +58,7 @@ public class LauncherDelegate extends LatteDelegate {
     }
 
     private void checkFirstEnter() {
-        boolean hasEnter = LattePreferences.getFlag(LattePrefKey.IS_FIRST_ENTER_APP);
+        boolean hasEnter = LattePreferences.getAppFlag(LattePrefKey.IS_FIRST_ENTER_APP);
         if (!hasEnter) {
             startWithPop(LauncherScrollDelegate.newInstance());
         } else {

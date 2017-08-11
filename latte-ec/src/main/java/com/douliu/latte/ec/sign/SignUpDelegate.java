@@ -1,4 +1,4 @@
-package com.douliu.latte.ec.launcher;
+package com.douliu.latte.ec.sign;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;

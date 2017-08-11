@@ -33,15 +33,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <ImageView
-                android:src="@mipmap/avatar"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="24dp"
-                android:contentDescription="@string/app_name" />
-
 
 
             <android.support.design.widget.TextInputLayout
@@ -90,6 +81,18 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ic_tv_weixin"
+                android:textSize="40sp"
+                android:textColor="@android:color/holo_green_light"
+                android:text="@string/icon_weixin_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
 
 
         </LinearLayout>
