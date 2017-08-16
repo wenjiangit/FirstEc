@@ -18,25 +18,29 @@ public class ExampleActivity extends ProxyActivity
 
     @Override
     public void onSignInSuccess() {
-        start(new ExampleDelegate());
+        toMainDelegate();
     }
 
     @Override
     public void onSignUpSuccess() {
-        start(new ExampleDelegate());
+        toMainDelegate();
     }
 
     @Override
     public void onLauncherFinished(LauncherTag tag) {
         switch (tag) {
             case SIGN:
-                start(new ExampleDelegate());
+                toMainDelegate();
                 break;
             case NOT_SIGN:
-                start(SignInDelegate.newInstance());
+                getSupportDelegate().startWithPop(SignInDelegate.newInstance());
                 break;
             default:
                 break;
         }
+    }
+
+    private void toMainDelegate() {
+        getSupportDelegate().startWithPop(new ExampleDelegate());
     }
 }

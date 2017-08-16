@@ -1,6 +1,5 @@
 package com.mac.latte.core.net.callback;
 
-import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.mac.latte.core.ui.LatteLoader;
@@ -23,8 +22,6 @@ public class RequestCallback implements Callback<String> {
     private final IRequest request;
     private final LoaderStyle style;
 
-    private static final Handler HANDLER = new Handler();
-
     public RequestCallback(ISuccess success, IError error,
                            IFailure failure, IRequest request,
                            LoaderStyle style) {
@@ -38,6 +35,7 @@ public class RequestCallback implements Callback<String> {
 
     @Override
     public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+        stopLoading();
         if (response.isSuccessful()) {
             if (call.isExecuted()) {
                 if (success != null) {
@@ -49,11 +47,11 @@ public class RequestCallback implements Callback<String> {
                 error.onError(response.code(), response.message());
             }
         }
-        stopLoading();
     }
 
     @Override
     public void onFailure(@NonNull Call<String> call, @NonNull Throwable throwable) {
+        stopLoading();
         throwable.printStackTrace();
         if (failure != null) {
             failure.onFailure();
@@ -62,20 +60,12 @@ public class RequestCallback implements Callback<String> {
             request.onRequestEnd();
         }
 
-        stopLoading();
-
     }
 
     private void stopLoading() {
         if (style == null) {
             return;
         }
-        HANDLER.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                LatteLoader.stopLoading();
-            }
-        }, 2000);
-
+        LatteLoader.stopLoading();
     }
 }
