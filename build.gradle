@@ -18,6 +18,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven { url "https://www.jitpack.io" }
     }
 }
 
@@ -37,4 +38,5 @@ ext{
     iconifyVersion = "2.2.2"
     butterknifeVersion = "8.5.1"
     retrofitVersion = "2.3.0"
+    dbflowVersion = "4.0.0-beta7"
 }

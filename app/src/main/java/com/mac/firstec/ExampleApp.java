@@ -6,6 +6,9 @@ import com.douliu.latte.ec.icon.FontAliModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.mac.latte.core.app.Latte;
 import com.mac.latte.core.net.interceptors.DebugInterceptor;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 import me.yokeyword.fragmentation.Fragmentation;
 
@@ -31,6 +34,11 @@ public class ExampleApp extends Application {
                 .stackViewMode(Fragmentation.BUBBLE)
                 .debug(BuildConfig.DEBUG)
                 .install();
+
+        FlowManager.init(this);
+
+        //日志的初始化
+        Logger.addLogAdapter(new AndroidLogAdapter());
 
     }
 }

@@ -3,13 +3,10 @@ package com.douliu.latte.ec.launcher;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.douliu.latte.ec.R;
 import com.douliu.latte.ec.R2;
-import com.douliu.latte.ec.sign.SignInDelegate;
 import com.mac.latte.core.constans.LattePrefKey;
-import com.mac.latte.core.delegate.LatteDelegate;
 import com.mac.latte.core.utils.LattePreferences;
 
 import java.util.Locale;
@@ -27,7 +24,7 @@ import io.reactivex.functions.Consumer;
  * Created by douliu on 2017/8/8.
  */
 
-public class LauncherDelegate extends LatteDelegate {
+public class LauncherDelegate extends AbsLauncherDelegate {
 
     @BindView(R2.id.tv_timer)
     Button mTvTimer;
@@ -62,9 +59,7 @@ public class LauncherDelegate extends LatteDelegate {
         if (!hasEnter) {
             startWithPop(LauncherScrollDelegate.newInstance());
         } else {
-            // TODO: 2017/8/9 跳转到主界面
-            Toast.makeText(getContext(), "跳转到主界面", Toast.LENGTH_SHORT).show();
-            startWithPop(SignInDelegate.newInstance());
+            checkSign();
         }
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -12,7 +11,6 @@ import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.douliu.latte.ec.R;
 import com.mac.latte.core.constans.LattePrefKey;
-import com.mac.latte.core.delegate.LatteDelegate;
 import com.mac.latte.core.utils.LattePreferences;
 
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ import java.util.List;
  *
  */
 
-public class LauncherScrollDelegate extends LatteDelegate implements OnItemClickListener {
+public class LauncherScrollDelegate extends AbsLauncherDelegate implements OnItemClickListener {
 
     private ConvenientBanner<Integer> mConvenientBanner;
 
@@ -63,11 +61,9 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
     @Override
     public void onItemClick(int i) {
         if (i == PAGES.size() - 1) {
-            // TODO: 2017/8/9 跳转到主界面
             LattePreferences.setAppFlag(LattePrefKey.IS_FIRST_ENTER_APP, true);
-            Toast.makeText(getContext(), "跳转到主界面", Toast.LENGTH_SHORT).show();
+            checkSign();
         }
-
     }
 
 

@@ -1,15 +1,19 @@
 package com.douliu.latte.ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import com.douliu.latte.ec.R;
 import com.douliu.latte.ec.R2;
+import com.douliu.latte.ec.api.Api;
 import com.mac.latte.core.delegate.LatteDelegate;
+import com.mac.latte.core.net.RestClient;
+import com.mac.latte.core.net.callback.ISuccess;
+import com.mac.latte.core.utils.Loger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -22,17 +26,26 @@ import butterknife.OnClick;
 
 public class SignInDelegate extends LatteDelegate {
 
-
     @BindView(R2.id.edit_email)
     TextInputEditText mEditEmail;
     @BindView(R2.id.edit_password)
     TextInputEditText mEditPassword;
+
+    private ISignListener mSignListener;
 
     public static SignInDelegate newInstance() {
         Bundle args = new Bundle();
         SignInDelegate fragment = new SignInDelegate();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mSignListener = ((ISignListener) activity);
+        }
     }
 
     @Override
@@ -54,7 +67,17 @@ public class SignInDelegate extends LatteDelegate {
     @OnClick(R2.id.tv_sign_in)
     void doSignIn() {
         if (checkForm()) {
-            Toast.makeText(getContext(), "登录", Toast.LENGTH_SHORT).show();
+            RestClient.buider()
+                    .url(Api.USER_PROFILE)
+                    .loader(getContext())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            Loger.i(TAG, response);
+                            SignHandler.signIn(response,mSignListener);
+                        }
+                    }).build()
+                    .get();
         }
     }
 
