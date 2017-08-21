@@ -26,6 +26,7 @@ dependencies {
     //butterknife注解框架
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    annotationProcessor project(':latte-compiler')
     compile project(':latte-ec')
     compile project(':latte-core')
 }
