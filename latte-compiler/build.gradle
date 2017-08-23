@@ -2,10 +2,14 @@ apply plugin: 'java-library'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(path: ':latte-annotations')
     compile 'com.google.auto.service:auto-service:1.0-rc3'
     compile 'com.squareup:javapoet:1.9.0'
+    compile project(path: ':latte-annotations')
 }
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

@@ -23,31 +23,28 @@ import javax.lang.model.element.AnnotationValueVisitor;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
 
 /**
+ *
  *
  * Created by douliu on 2017/8/21.
  */
 @AutoService(Processor.class)
 public class LatteProcessor extends AbstractProcessor {
 
-    private Elements elementUtils;
-    private Types typeUtils;
     private Filer filer;
 
     @Override
     public synchronized void init(ProcessingEnvironment env) {
         super.init(env);
-        elementUtils = env.getElementUtils();
-        typeUtils = env.getTypeUtils();
         filer = env.getFiler();
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
         generateEntryCode(roundEnvironment);
+        generatePayEntryCode(roundEnvironment);
+        generateAppRegisterCode(roundEnvironment);
         return true;
     }
 
@@ -66,9 +63,19 @@ public class LatteProcessor extends AbstractProcessor {
         return SourceVersion.latestSupported();
     }
 
-    private void generateEntryCode(RoundEnvironment roundEnv){
+    private void generateEntryCode(RoundEnvironment roundEnv) {
         final EntryVisitor visitor = new EntryVisitor(filer);
         scan(roundEnv, EntryGenerator.class, visitor);
+    }
+
+    private void generatePayEntryCode(RoundEnvironment roundEnv) {
+        final PayEntryVisitor visitor = new PayEntryVisitor(filer);
+        scan(roundEnv, PayEntryGenerator.class, visitor);
+    }
+
+    private void generateAppRegisterCode(RoundEnvironment roundEnv) {
+        final AppRegisterVisitor visitor = new AppRegisterVisitor(filer);
+        scan(roundEnv, AppRegisterGenerator.class, visitor);
     }
 
 
@@ -91,7 +98,6 @@ public class LatteProcessor extends AbstractProcessor {
             }
         }
     }
-
 
 
 }

@@ -35,18 +35,6 @@ public class ExampleDelegate extends LatteDelegate {
 
     @OnClick(R.id.test)
     public void onClick() {
-        /*RestClient.buider()
-                .url("https://www.baidu.com")
-                .loader(getContext())
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        Log.d(TAG, "onSuccess: " + response);
-                    }
-                }).build()
-                .get();
-*/
-
         RxRestClient.buider()
                 .url("https://www.baidu.com")
                 .loader(getContext()).build().get()
