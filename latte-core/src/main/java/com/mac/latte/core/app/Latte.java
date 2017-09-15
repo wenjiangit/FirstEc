@@ -15,13 +15,18 @@ import okhttp3.Interceptor;
 public final class Latte {
 
     public static Configurator init(Context context) {
-        getConfigurations().put(ConfigKey.APPLICATION_CONTEXT.name(),
+        getConfigurations().put(ConfigKey.APPLICATION_CONTEXT,
                 context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static Map<String, Object> getConfigurations() {
+    private static Map<Object, Object> getConfigurations() {
         return Configurator.getInstance().getLatteConfigs();
+    }
+
+
+    public static <T> T getConfiguration(ConfigKey configKey){
+        return (T) getConfigurations().get(configKey);
     }
 
     /**

@@ -138,7 +138,7 @@ public class SignUpDelegate extends LatteDelegate {
                         @Override
                         public void onSuccess(String response) {
                             Loger.i(TAG, response);
-                            SignHandler.signUp(response,mSignListener);
+                            SignHandler.signUp(response);
                         }
                     }).build()
                     .get();

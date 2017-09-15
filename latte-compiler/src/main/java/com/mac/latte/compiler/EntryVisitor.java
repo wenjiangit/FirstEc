@@ -1,5 +1,6 @@
 package com.mac.latte.compiler;
 
+
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
@@ -37,7 +38,7 @@ class EntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
     }
 
     private void generateJavaCode(TypeMirror typeMirror) {
-        final TypeSpec targetActivity = TypeSpec.classBuilder("WxEntryActivity")
+        final TypeSpec targetActivity = TypeSpec.classBuilder("WXEntryActivity")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .superclass(TypeName.get(typeMirror))
                 .build();

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Created by douliu on 2017/8/21.
  */
 
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 public @interface EntryGenerator {
 

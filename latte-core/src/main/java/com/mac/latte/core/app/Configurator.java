@@ -1,9 +1,10 @@
 package com.mac.latte.core.app;
 
 
+import android.app.Activity;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
-import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,16 +20,16 @@ import okhttp3.Interceptor;
 
 public class Configurator {
 
-    private static final Map<String, Object> LATTE_CONFIGS = new HashMap<>();
+    private static final Map<Object, Object> LATTE_CONFIGS = new HashMap<>();
 
     private static final List<IconFontDescriptor> ICONS = new ArrayList<>();
     private static final List<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
-        LATTE_CONFIGS.put(ConfigKey.CONFIG_READY.name(), false);
+        LATTE_CONFIGS.put(ConfigKey.CONFIG_READY, false);
     }
 
-    static Configurator getInstance() {
+    public static Configurator getInstance() {
         return Holder.INSTANCE;
     }
 
@@ -38,16 +39,16 @@ public class Configurator {
 
     public void configure() {
         initIcons();
-        LATTE_CONFIGS.put(ConfigKey.CONFIG_READY.name(), true);
+        LATTE_CONFIGS.put(ConfigKey.CONFIG_READY, true);
     }
 
-    Map<String, Object> getLatteConfigs() {
+    Map<Object, Object> getLatteConfigs() {
         return LATTE_CONFIGS;
     }
 
     @SuppressWarnings("SameParameterValue")
     public Configurator withApiHost(String host) {
-        LATTE_CONFIGS.put(ConfigKey.API_HOST.name(), host);
+        LATTE_CONFIGS.put(ConfigKey.API_HOST, host);
         return this;
     }
 
@@ -65,15 +66,31 @@ public class Configurator {
 
     public Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
-        LATTE_CONFIGS.put(ConfigKey.INTERCEPTOR.name(), INTERCEPTORS);
+        LATTE_CONFIGS.put(ConfigKey.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
     public Configurator withInterceptor(List<Interceptor> interceptors) {
         INTERCEPTORS.addAll(interceptors);
-        LATTE_CONFIGS.put(ConfigKey.INTERCEPTOR.name(), INTERCEPTORS);
+        LATTE_CONFIGS.put(ConfigKey.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
+
+    public Configurator withWxAppId(String appId) {
+        LATTE_CONFIGS.put(ConfigKey.WX_APP_ID, appId);
+        return this;
+    }
+
+    public Configurator withWxAppSecret(String appSecret) {
+        LATTE_CONFIGS.put(ConfigKey.WX_APP_SECRET, appSecret);
+        return this;
+    }
+
+    public Configurator withActivity(Activity activity) {
+        LATTE_CONFIGS.put(ConfigKey.ACTIVITY, activity);
+        return this;
+    }
+
 
     public Configurator withIcon(IconFontDescriptor descriptor) {
         ICONS.add(descriptor);
@@ -83,11 +100,11 @@ public class Configurator {
     @SuppressWarnings("unchecked")
     static <T> T getConfiguration(ConfigKey type) {
         checkConfigReady();
-        return (T) LATTE_CONFIGS.get(type.name());
+        return (T) LATTE_CONFIGS.get(type);
     }
 
     private static void checkConfigReady() {
-        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKey.CONFIG_READY.name());
+        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKey.CONFIG_READY);
         if (!isReady) {
             throw new RuntimeException("Configuration is not ready,please call configure");
         }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">latte-core</string>
+    <string name="errcode_success">请求成功</string>
+    <string name="errcode_cancel">请求取消</string>
+    <string name="errcode_unsupported">不支持的请求</string>
+    <string name="errcode_unknown">未知错误</string>
+    <string name="errcode_deny">权限拒绝</string>
 </resources>

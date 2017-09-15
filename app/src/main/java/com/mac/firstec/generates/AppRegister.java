@@ -11,4 +11,5 @@ import com.mac.latte.core.wechat.templates.AppRegisterTemplate;
         registerTemplate = AppRegisterTemplate.class
 )
 public interface AppRegister {
+
 }
