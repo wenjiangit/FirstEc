@@ -1,6 +1,5 @@
 package com.douliu.latte.ec.api;
 
-import com.mac.latte.core.app.ConfigKey;
 import com.mac.latte.core.app.Latte;
 
 /**
@@ -10,7 +9,9 @@ import com.mac.latte.core.app.Latte;
 
 public interface Api {
 
-    String BASE_URL = Latte.getConfiguration(ConfigKey.API_HOST)+"/RestServer/data/";
+    String BASE_URL = Latte.getApiHost()+"/RestServer/data/";
+
+    String INDEX = Latte.getApiHost()+"/RestServer/api";
 
     String USER_PROFILE = BASE_URL + "user_profile.json";
 

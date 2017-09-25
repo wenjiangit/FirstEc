@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.douliu.latte.ec.R;
 import com.douliu.latte.ec.R2;
+import com.douliu.latte.ec.main.EcBottomDelegate;
 import com.mac.latte.core.mvp.base.BaseMvpFragment;
 
 import butterknife.BindView;
@@ -110,6 +111,7 @@ public class SignInDelegate extends BaseMvpFragment<SignInContract.View, SignInC
     @Override
     public void signInSuccess() {
         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
+        startWithPop(EcBottomDelegate.newInstance());
     }
 
     @Override

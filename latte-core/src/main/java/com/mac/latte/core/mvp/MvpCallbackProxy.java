@@ -4,6 +4,7 @@ import com.mac.latte.core.mvp.base.MvpPresenter;
 import com.mac.latte.core.mvp.base.MvpView;
 
 /**
+ *
  * Created by douliu on 2017/8/31.
  */
 

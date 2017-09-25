@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.douliu.latte.ec.launcher.ILauncherListener;
 import com.douliu.latte.ec.launcher.LauncherDelegate;
 import com.douliu.latte.ec.launcher.LauncherTag;
+import com.douliu.latte.ec.main.EcBottomDelegate;
 import com.douliu.latte.ec.sign.ISignListener;
 import com.douliu.latte.ec.sign.SignInDelegate;
 import com.mac.latte.core.activities.ProxyActivity;
@@ -51,6 +52,6 @@ public class ExampleActivity extends ProxyActivity
     }
 
     private void toMainDelegate() {
-        getSupportDelegate().startWithPop(new ExampleDelegate());
+        getSupportDelegate().startWithPop(EcBottomDelegate.newInstance());
     }
 }
