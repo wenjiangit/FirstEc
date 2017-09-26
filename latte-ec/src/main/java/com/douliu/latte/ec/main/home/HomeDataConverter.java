@@ -28,7 +28,7 @@ public class HomeDataConverter extends DataConverter {
         for (int i = 0; i < size; i++) {
             JSONObject data = jsonArray.getJSONObject(i);
             String text = data.getString(MultipleFields.TEXT);
-            Integer goodsId = data.getInteger(MultipleFields.ID);
+            Integer goodsId = data.getInteger(MultipleFields.GOODS_ID);
             String imageUrl = data.getString(MultipleFields.IMAGE_URL);
             JSONArray banners = data.getJSONArray(MultipleFields.BANNERS);
             Integer spanSize = data.getInteger(MultipleFields.SPAN_SIZE);
@@ -54,7 +54,7 @@ public class HomeDataConverter extends DataConverter {
                     .addField(MultipleFields.SPAN_SIZE, spanSize)
                     .addField(MultipleFields.BANNERS, bannerUrls)
                     .addField(MultipleFields.IMAGE_URL, imageUrl)
-                    .addField(MultipleFields.ID, goodsId)
+                    .addField(MultipleFields.GOODS_ID, goodsId)
                     .addField(MultipleFields.TEXT, text)
                     .addField(MultipleFields.ITEM_TYPE, type)
                     .build();

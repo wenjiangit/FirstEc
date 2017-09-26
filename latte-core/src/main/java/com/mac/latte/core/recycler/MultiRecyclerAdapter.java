@@ -32,11 +32,12 @@ public class MultiRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleItem
             .centerCrop()
             .dontAnimate();
 
-    private MultiRecyclerAdapter(List<MultipleItemEntity> data) {
+    protected MultiRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
         init();
     }
 
+    // FIXME: 2017/9/25 此处好像不能使用这种方法创建Adapter,必须依据数据确定每个item的spanSize
     public static MultiRecyclerAdapter create() {
         return new MultiRecyclerAdapter(new ArrayList<MultipleItemEntity>());
     }

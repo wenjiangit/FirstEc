@@ -7,8 +7,9 @@ package com.mac.latte.core.recycler;
 
 public interface ItemType {
 
-    int TEXT = 0;
-    int IMAGE = 1;
-    int TEXT_IMAGE = 2;
-    int BANNER = 3;
+    int TEXT = 1;
+    int IMAGE = 2;
+    int TEXT_IMAGE = 3;
+    int BANNER = 4;
+    int MENU_LIST = 5;
 }

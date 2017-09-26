@@ -10,6 +10,14 @@
     <string name="label_email_address">邮箱地址</string>
     <string name="label_phone_number">手机号码</string>
     <string name="label_user_name">用户名</string>
+    <string name="label_more"><![CDATA[more >]]></string>
+    <string name="label_search">搜索</string>
     <string name="icon_weixin_signin">{fa-weixin}</string>
     <string name="icon_scan">{icon-scan}</string>
+    <string name="icon_bullhorn">{fa-bullhorn}</string>
+
+
+
+    <string name="title_sort">分类</string>
+
 </resources>

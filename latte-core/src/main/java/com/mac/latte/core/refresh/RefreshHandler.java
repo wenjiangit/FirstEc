@@ -38,9 +38,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
 
     private void init() {
         mRefreshLayout.setOnRefreshListener(this);
-        mAdapter = MultiRecyclerAdapter.create();
-        mAdapter.setOnLoadMoreListener(RefreshHandler.this, mRecyclerView);
-        mRecyclerView.setAdapter(mAdapter);
+
     }
 
     public static RefreshHandler create(SwipeRefreshLayout swipeRefreshLayout,
@@ -71,7 +69,9 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                         JSONObject object = JSON.parseObject(response);
                         mPagingBean.setTotal(object.getInteger("total"))
                                 .setPageSize(object.getInteger("page_size"));
-                        mAdapter.setNewData(mConverter.setJsonData(response).getEntities());
+                        mAdapter = MultiRecyclerAdapter.create(mConverter.setJsonData(response));
+                        mAdapter.setOnLoadMoreListener(RefreshHandler.this, mRecyclerView);
+                        mRecyclerView.setAdapter(mAdapter);
                     }
                 }).build()
                 .get();

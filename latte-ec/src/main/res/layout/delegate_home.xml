@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -21,10 +21,12 @@
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.v7.widget.Toolbar
+        android:paddingTop="@dimen/statusBarSize"
+        android:background="@android:color/transparent"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/statusWithActionBarSize"
-        android:layout_marginTop="@dimen/statusBarSize">
+        app:layout_behavior="com.douliu.latte.ec.main.home.TranslucentBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,30 +34,35 @@
             android:orientation="horizontal">
 
             <com.joanzapata.iconify.widget.IconTextView
-                android:textSize="28sp"
                 android:id="@+id/icon_scan"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_weight="1"
-                android:text="@string/icon_scan" />
+                android:gravity="center"
+                android:text="@string/icon_scan"
+                android:textSize="@dimen/font_32" />
 
             <EditText
-                android:gravity="center"
                 android:id="@+id/edit_search"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="4"
-                android:inputType="text" />
+                android:background="@color/white"
+                android:gravity="center"
+                android:hint="@string/label_search"
+                android:inputType="text"
+                 />
 
             <com.joanzapata.iconify.widget.IconTextView
-                android:gravity="center"
                 android:id="@+id/icon_more"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/icon_bullhorn"
+                android:textSize="@dimen/font_32" />
 
         </LinearLayout>
 

@@ -16,9 +16,6 @@ public abstract class DataConverter {
 
     private String mJsonData;
 
-    public DataConverter() {
-    }
-
     public DataConverter setJsonData(String jsonData) {
         mJsonData = jsonData;
         return this;

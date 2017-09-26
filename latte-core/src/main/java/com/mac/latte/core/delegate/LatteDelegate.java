@@ -7,4 +7,8 @@ package com.mac.latte.core.delegate;
 
 public abstract class LatteDelegate extends BaseDelegate{
 
+    @SuppressWarnings("unchecked")
+    protected  <T extends LatteDelegate> T getParentDelegate() {
+        return (T) getParentFragment();
+    }
 }

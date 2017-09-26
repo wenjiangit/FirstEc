@@ -2,6 +2,7 @@ package com.douliu.latte.ec.main.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import com.joanzapata.iconify.widget.IconTextView;
 import com.mac.latte.core.delegate.bottom.BottomItemDelegate;
 import com.mac.latte.core.net.RestClient;
 import com.mac.latte.core.net.callback.ISuccess;
+import com.mac.latte.core.recycler.LatteItemDecoration;
 import com.mac.latte.core.recycler.MultipleFields;
 import com.mac.latte.core.recycler.MultipleItemEntity;
 import com.mac.latte.core.refresh.RefreshHandler;
@@ -69,6 +71,8 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
 
     private void initRecyclerView() {
         mRecycler.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        mRecycler.addItemDecoration(LatteItemDecoration.create(ContextCompat.getColor(getContext(),R.color.grey_300),4));
+        mRecycler.addOnItemTouchListener(new HomeItemClickListener(this.getParentDelegate()));
     }
 
     @Override

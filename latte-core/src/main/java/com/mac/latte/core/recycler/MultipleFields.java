@@ -11,7 +11,8 @@ public interface MultipleFields {
     String IMAGE_URL = "imageUrl";
     String BANNERS = "banners";
     String SPAN_SIZE = "spanSize";
-    String ID = "goodsId";
-    String NAME = "NAME";
+    String GOODS_ID = "goodsId";
+    String ID = "id";
+    String NAME = "name";
     String TAG = "TAG";
 }

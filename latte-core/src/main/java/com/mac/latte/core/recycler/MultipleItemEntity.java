@@ -32,6 +32,10 @@ public class MultipleItemEntity implements MultiItemEntity{
         return (T) FIELDS.get(key);
     }
 
+    public void setField(Object key, Object value) {
+        FIELDS.put(key, value);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

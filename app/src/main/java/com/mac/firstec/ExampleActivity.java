@@ -13,6 +13,8 @@ import com.mac.latte.core.activities.ProxyActivity;
 import com.mac.latte.core.app.Configurator;
 import com.mac.latte.core.delegate.LatteDelegate;
 
+import qiu.niorgai.StatusBarCompat;
+
 public class ExampleActivity extends ProxyActivity
         implements ISignListener, ILauncherListener {
 
@@ -20,6 +22,7 @@ public class ExampleActivity extends ProxyActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Configurator.getInstance().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this);
     }
 
     @Override

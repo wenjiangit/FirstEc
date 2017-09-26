@@ -25,6 +25,7 @@ public final class Latte {
     }
 
 
+    @SuppressWarnings("unchecked")
     public static <T> T getConfiguration(ConfigKey configKey){
         return (T) getConfigurations().get(configKey);
     }
