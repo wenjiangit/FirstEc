@@ -68,7 +68,7 @@ public class SortContentDelegate extends LatteDelegate {
                     @Override
                     public void onSuccess(String response) {
                         List<SectionBean> sectionBeans = new ContentDataConverter(response).convert();
-                        ContentAdapter adapter = new ContentAdapter(R.layout.item_sort_content
+                        SectionAdapter adapter = new SectionAdapter(R.layout.item_sort_content
                                 , R.layout.item_sort_header, sectionBeans);
                         mRecyclerView.setAdapter(adapter);
                     }

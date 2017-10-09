@@ -4,10 +4,12 @@ import android.app.Activity;
 
 import com.douliu.latte.ec.account.AccountManager;
 import com.douliu.latte.ec.account.IUserChecker;
+import com.douliu.latte.ec.main.EcBottomDelegate;
+import com.douliu.latte.ec.sign.SignInDelegate;
 import com.mac.latte.core.delegate.LatteDelegate;
 
 /**
- *
+ * 启动页面的基类
  * Created by douliu on 2017/8/14.
  */
 
@@ -27,16 +29,18 @@ public abstract class AbsLauncherDelegate extends LatteDelegate {
         AccountManager.checkAccount(new IUserChecker() {
             @Override
             public void onSignIn() {
-                if (mLauncherListener != null) {
+                startWithPop(EcBottomDelegate.newInstance());
+               /* if (mLauncherListener != null) {
                     mLauncherListener.onLauncherFinished(LauncherTag.SIGN);
-                }
+                }*/
             }
 
             @Override
             public void onNotSignIn() {
-                if (mLauncherListener != null) {
+                startWithPop(SignInDelegate.newInstance());
+               /* if (mLauncherListener != null) {
                     mLauncherListener.onLauncherFinished(LauncherTag.NOT_SIGN);
-                }
+                }*/
             }
         });
     }

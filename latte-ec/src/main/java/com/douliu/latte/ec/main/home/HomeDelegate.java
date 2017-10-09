@@ -48,7 +48,7 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
     Toolbar mToolbar;
     private RefreshHandler mRefreshHandler;
 
-    public static HomeDelegate newInstance() {
+    public static HomeDelegate create() {
         Bundle args = new Bundle();
         HomeDelegate fragment = new HomeDelegate();
         fragment.setArguments(args);

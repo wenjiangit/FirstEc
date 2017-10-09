@@ -55,6 +55,6 @@ public class ExampleActivity extends ProxyActivity
     }
 
     private void toMainDelegate() {
-        getSupportDelegate().startWithPop(EcBottomDelegate.newInstance());
+        startWithPop(EcBottomDelegate.newInstance());
     }
 }

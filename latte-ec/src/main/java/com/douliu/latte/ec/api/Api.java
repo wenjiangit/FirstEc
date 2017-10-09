@@ -9,9 +9,9 @@ import com.mac.latte.core.app.Latte;
 
 public interface Api {
 
-    String BASE_URL = Latte.getApiHost()+"/RestServer/data/";
+    String BASE_URL = Latte.getApiHost() + "/RestServer/data/";
 
-    String INDEX = Latte.getApiHost()+"/RestServer/api";
+    String INDEX = BASE_URL + "index_data.json";
 
     String USER_PROFILE = BASE_URL + "user_profile.json";
 

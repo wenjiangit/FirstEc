@@ -30,7 +30,7 @@ public class LatteLoader {
     private static final LoaderStyle DEFAULT_STYLE = LoaderStyle.BallClipRotatePulseIndicator;
 
 
-    public static void showLoading(Context context, String type) {
+    private static void showLoading(Context context, String type) {
         final AppCompatDialog dialog = new AppCompatDialog(context,R.style.dialog);
 
         AVLoadingIndicatorView loadingIndicatorView = LoaderCreator.create(context, type);

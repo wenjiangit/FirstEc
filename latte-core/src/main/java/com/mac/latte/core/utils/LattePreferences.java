@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import com.mac.latte.core.app.Latte;
 
 /**
+ *
+ * 缓存
  * Created by douliu on 2017/8/9.
  */
 
@@ -26,6 +28,16 @@ public class LattePreferences {
 
     public static boolean getAppFlag(String key) {
         return getPreferences().getBoolean(key, false);
+    }
+
+    public static void setCustomProfile(String key, String value) {
+        getPreferences().edit()
+                .putString(key, value)
+                .apply();
+    }
+
+    public static String getCustomProfile(String key) {
+        return getPreferences().getString(key, "");
     }
 
 

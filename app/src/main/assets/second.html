@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地测试2</title>
+</head>
+<script>
+    function call(){
+
+     var json = {
+            action: "test",
+            params: {
+                imageUrl:"http://i9.qhimg.com/t017d891ca365ef60b5.jpg",
+                url:"https://www.baidu.com",
+                title:"标题",
+                text:"描述"
+            }
+        };
+
+        Latte.event(JSON.stringify(json));
+
+
+    }
+
+</script>
+<body>
+<button onclick="call()">点击这里</button>
+
+<h1>这是本地页面2</h1>
+
+</body>
+</html>

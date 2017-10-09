@@ -66,12 +66,11 @@ public class SortListAdapter extends MultiRecyclerAdapter implements View.OnClic
                 if (clicked) {
                     txtName.setTextColor(ContextCompat.getColor(mContext, R.color.orange_300));
                     indicator.setBackgroundColor(ContextCompat.getColor(mContext, R.color.orange_300));
-                    itemView.setBackgroundColor(Color.WHITE);
+                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.grey_200));
                     indicator.setVisibility(View.VISIBLE);
                 } else {
+                    itemView.setBackgroundColor(Color.WHITE);
                     txtName.setTextColor(ContextCompat.getColor(mContext, R.color.grey_800));
-                    indicator.setBackgroundColor(ContextCompat.getColor(mContext, R.color.grey_500));
-                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.grey_200));
                     indicator.setVisibility(View.INVISIBLE);
                 }
                 txtName.setText(name);

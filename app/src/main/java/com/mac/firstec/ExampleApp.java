@@ -5,6 +5,7 @@ import android.app.Application;
 import com.douliu.latte.ec.icon.FontAliModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.mac.latte.core.app.Latte;
+import com.mac.latte.core.net.interceptors.AddCookieInterceptor;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -24,7 +25,8 @@ public class ExampleApp extends Application {
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontAliModule())
-                .withApiHost("http://116.196.95.67")
+                .withInterceptor(new AddCookieInterceptor())
+                .withApiHost("http://116.196.74.143")
                 .withWxAppId("wxf0ebff3bd2eedd12")
                 .withWxAppSecret("d4624c36b6795d1d99dcf0547af5443d")
                 .configure();

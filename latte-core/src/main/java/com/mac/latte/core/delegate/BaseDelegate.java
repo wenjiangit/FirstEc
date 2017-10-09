@@ -44,7 +44,7 @@ public abstract class BaseDelegate extends SwipeBackFragment{
             mUnbinder = ButterKnife.bind(this, rootView);
             onBindView(savedInstanceState, rootView);
         }
-        return attachToSwipeBack(rootView);
+        return rootView;
     }
 
     protected ProxyActivity getProxyActivity() {

@@ -10,14 +10,14 @@ import com.mac.latte.core.glide.GlideApp;
 import java.util.List;
 
 /**
- * Description:ContentAdapter
+ * Description:SectionAdapter
  * Author:douliu
  * Date:Created on 2017/9/26.
  */
 
-public class ContentAdapter extends BaseSectionQuickAdapter<SectionBean,BaseViewHolder> {
+public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean,BaseViewHolder> {
 
-    ContentAdapter(int layoutResId, int sectionHeadResId, List<SectionBean> data) {
+    SectionAdapter(int layoutResId, int sectionHeadResId, List<SectionBean> data) {
         super(layoutResId, sectionHeadResId, data);
     }
 
