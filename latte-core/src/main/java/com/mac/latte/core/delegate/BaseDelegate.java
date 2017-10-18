@@ -13,8 +13,9 @@ import butterknife.Unbinder;
 import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 /**
- *
- * Created by mac on 2017/8/2.
+ * @desc 基类fragment
+ * @author wenjian
+ * @date on 2017/8/2.
  */
 
 public abstract class BaseDelegate extends SwipeBackFragment{
@@ -23,8 +24,17 @@ public abstract class BaseDelegate extends SwipeBackFragment{
 
     private Unbinder mUnbinder;
 
+    /**
+     * 设置布局
+     * @return 布局id或view
+     */
     protected abstract Object setLayout();
 
+    /**
+     * 绑定控件
+     * @param savedInstanceState Bundle
+     * @param rootView 根布局
+     */
     protected abstract void onBindView(Bundle savedInstanceState, View rootView);
 
     @Nullable

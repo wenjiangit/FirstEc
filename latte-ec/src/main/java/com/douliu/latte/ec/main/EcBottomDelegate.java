@@ -3,6 +3,7 @@ package com.douliu.latte.ec.main;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.douliu.latte.ec.main.cart.ShopCartDelegate;
 import com.douliu.latte.ec.main.discovery.DiscoveryDelegate;
 import com.douliu.latte.ec.main.home.HomeDelegate;
 import com.douliu.latte.ec.main.sort.SortDelegate;
@@ -42,7 +43,7 @@ public class EcBottomDelegate extends BaseBottomDelegate {
         return builder.addItem(new BottomItemBean("{fa-home}", "首页"), HomeDelegate.create())
                 .addItem(new BottomItemBean("{fa-sort}", "分类"), SortDelegate.create())
                 .addItem(new BottomItemBean("{fa-compass}", "发现"), DiscoveryDelegate.create())
-                .addItem(new BottomItemBean("{fa-shopping-cart}", "购物车"), new IndexDelegate())
+                .addItem(new BottomItemBean("{fa-shopping-cart}", "购物车"), ShopCartDelegate.create())
                 .addItem(new BottomItemBean("{fa-user}", "我的"), new IndexDelegate())
                 .build();
     }

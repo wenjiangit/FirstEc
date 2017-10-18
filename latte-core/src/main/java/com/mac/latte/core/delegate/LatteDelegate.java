@@ -1,6 +1,7 @@
 package com.mac.latte.core.delegate;
 
 /**
+ * 基类
  * Created by mac on 2017/8/2.
  */
 

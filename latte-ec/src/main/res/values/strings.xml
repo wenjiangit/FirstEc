@@ -20,5 +20,10 @@
 
     <string name="title_sort">分类</string>
     <string name="title_discovery">发现</string>
+    <string name="menu_shop_cart_clear">清空</string>
+    <string name="title_shop_cart">购物车</string>
+    <string name="menu_shop_cart_delete">删除</string>
+    <string name="label_choose_all">全选</string>
+    <string name="fa_check_circle">{fa-check-circle}</string>
 
 </resources>
